@@ -1,0 +1,126 @@
+// Start Hamburger Menu
+
+.header__hamb {
+	position: relative;
+	top: 10%;
+	left: 95%;
+	//transform: translate(-50%, -50%);
+	width: 5rem;
+}
+
+.header__hamb__icon {
+	transform: translate(-50%, -50%);
+	background-color: white;
+	width: 5rem;
+	height: 5rem;
+	display: block;
+	cursor: pointer;
+	border-top-right-radius: 10rem;
+	border-top-left-radius: 10rem;
+	border-bottom-right-radius: 10rem;
+	border-bottom-left-radius: 10rem;
+	margin-bottom: 0;
+}
+
+.header__hamb__iconLines {
+	width: 100%;
+	height: 5px;
+	background-color: #28b485;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	transition-duration: 1s;
+}
+.header__hamb__iconLines:before,
+.header__hamb__iconLines:after {
+	content: ' ';
+	left: 20%;
+	position: absolute;
+	width: 60%;
+	height: 5px;
+	background-color: #28b485;
+	transition-duration: 1s;
+}
+
+.header__hamb__iconLines:before {
+	top: -10px;
+}
+
+.header__hamb__iconLines:after {
+	top: 10px;
+}
+
+
+.header__hamb__icon.active .header__hamb__iconLines {
+	background:  rgba(0,0,0,0);
+}
+
+.header__hamb__icon.active .header__hamb__iconLines:before {
+	transform: rotate(45deg);
+	top: 0;
+}
+
+.header__hamb__icon.active .header__hamb__iconLines:after {
+	transform: rotate(135deg);
+	top: 0;
+}
+
+.header__hamb__icon.active {
+	border-bottom-right-radius: 0px;
+	border-bottom-left-radius: 0px;
+}
+
+
+
+.header__hamb__menu {
+	display: none;
+}
+
+.header__hamb__menuList {
+	list-style-type: none;
+	display: inline-block;
+	text-align: left;
+	padding: 10px;
+	margin: 0px;
+}
+
+.header__hamb__menu.showMenu a {
+	display: inline-block;
+	color: #28b485;
+	padding: 5px;
+	text-decoration: none;
+	font-size: 16px;
+	text-transform: uppercase;
+}
+
+.header__hamb__menu.showMenu {
+	display: block;
+	position: absolute;
+	top: 50%;
+	right: 20%;
+	margin: 0;
+	padding: 0;
+	background: #fff;
+	border-radius: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+$font-size-base: 14px;

@@ -1,0 +1,565 @@
+$color-green: #55c57a;
+$color-green-light: #7ed56f;
+$color-green-dark: #28b485;
+$color-grey-dark: #777;
+$color-grey-light-1: #f7f7f7;
+$color-white: #fff;
+$color-black: #000;
+$color-orange-light: #ffb900;
+$color-orange-dark: #ff7730;
+$color-blue-light: #2998ff;
+$color-blue-dark: #5643fa;
+
+$gutter-horizontal: 5rem;
+
+$grid-width: 1040px;
+
+$default-fontsize: 1.6rem;
+
+@mixin clearFix {
+	&::after {
+		content: "";
+		display: table;
+		clear: both;
+	}
+}
+
+* {
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 62.5%;
+}
+
+body {
+	font-family: "Arial", sans-serif;
+	font-weight: 400;
+	font-size: 1.6rem;
+	line-height: 1.7;
+	color: $color-grey-dark;
+	padding: 3rem;
+}
+
+.header {
+	height: 85vh;
+	background-image: linear-gradient(
+		to right bottom, rgba($color-green-light, 0.6), rgba($color-green-dark, 0.6)), url("../img/odessa.jpeg");
+	background-size: cover;
+	background-position: center;
+	clip-path: polygon(0 0, 100% 0, 100% 70vh, 0 100%);
+	position: relative;
+
+	&__logo-box{
+	position: absolute;
+	top: 5rem;
+	left: 5rem;
+	}
+
+	&__logo {
+		height: 7rem;
+	}
+
+	&__text-box {
+	position: absolute;
+	top: 40%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	text-align: center;
+	}
+}
+
+.heading-primary {
+	color: $color-white;
+	text-transform: uppercase;
+	backface-visibilty: hidden;
+	margin-bottom: 3rem;
+
+	&--main {
+		display: block;
+		font-size: 4rem;
+		font-weight: 400;
+		letter-spacing: 1.5rem;
+		animation-name: moveInLeft;
+		animation-duration: 2s;
+	}
+	&--sub {
+		display: block;
+		font-size: 2rem;
+		font-weight: 700;
+		letter-spacing: 1.8rem;
+		animation-name: moveInRight;
+		animation-duration: 2s;
+	}
+}
+
+@keyframes moveInLeft {
+	0% {
+		opacity: 0;
+		transform: translateX(-100px);
+	}
+	100% {
+		opacity: 1;
+		transform: translate(0);
+	}
+}
+
+@keyframes moveInRight {
+	0% {
+		opacity: 0;
+		transform: translateX(10rem);
+	}
+	100% {
+		opacity: 1;
+		transform: translate(0);
+	}
+}
+
+.btn {
+	&:link,
+	&:visited {
+		text-transform: uppercase;
+		text-decoration: none;
+		padding: 1.5rem 4rem;
+		display: inline-block;
+		border-radius: 10rem;
+		transition: all .2s;
+		animation-name: moveInUp;
+		animation-duration: 2s;
+	}
+
+	&:hover {
+		transform: translateY(-3px);
+		box-shadow: 0 1rem 2rem rgba ($color-black,.5);
+	}
+
+	&:active {
+		transform: translateY(1px);
+		box-shadow: 0 .5rem 1rem rgba ($color-black,.5);
+	}
+
+	&--white {
+		background-color: $color-white;
+		color: $color-grey-dark;
+	}
+	&--green {
+		background-color: $color-green-dark;
+		color: $color-white;
+	}
+}
+
+@keyframes moveInUp {
+	0% {
+		opacity: 0;
+		transform: translateY(4rem);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.section-about {
+	background-color: $color-grey-light-1;
+	padding: 25rem 0;
+	margin-top: -30vh;
+}
+
+.heading-secondary {
+	font-size: 3rem;
+	text-transform: uppercase;
+	font-weight: 700;
+	background-image: 
+		linear-gradient(to right bottom, $color-green-light, $color-green-dark);
+	display: inline-block;
+	-webkit-background-clip: text;
+	color: transparent;
+	letteer-spacing: 2px;
+	transition: all .2s;
+
+	&:hover {
+		transform: skewY(5deg) skewX(10deg) scale(1.2);
+		text-shadow: .5rem 1rem 2rem rgba($color-black, .2);
+	}
+}
+
+.u-center-text {
+	text-align: center;
+}
+
+.row {
+	max-width: $grid-width;
+	margin: 0 auto;
+
+	@include clearFix;
+
+	[class^="column-"] {
+		float: left;
+
+		&:not(:last-child) {
+			margin-right: $gutter-horizontal;
+		}
+	}
+
+	.column-1-of-2 {
+		width: calc((100% - #{$gutter-horizontal}) / 2);
+	}
+
+	.column-1-of-4 {
+		width: calc((100%-3 * #{$gutter-horizontal}) / 5);
+	}
+
+	.column-1-of-3 {
+		width: calc((100%-2 * #{$gutter-horizontal}) / 4);
+	}
+	
+}
+
+.u-margin-bottom-5 {
+	margin-bottom: 5rem;
+}
+
+.u-margin-bottom-2 {
+	margin-bottom: 2rem;
+}
+
+.heading-tertiary {
+	font-size: $default-fontsize;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+.paragraph {
+	font-size: $default-fontsize;
+
+	&:not(:last-child) {
+		margin-bottom: 3rem;
+	}
+}
+
+
+.btn-text {
+	&:link, 
+	&:visited {
+		font-size: $default-fontsize;
+		color: $color-green;
+		display: inline-block;
+		text-decoration: none;
+		border-bottom: 1px solid $color-green;
+		padding: 3px;
+		transition: all .2s;
+	}
+
+	&:hover {
+		background-color: $color-green;
+		color: $color-white;
+		box-shadow: 0 1rem 2rem rgba($color-black, 0.5);
+		transform: translateY(-2px);
+	}
+
+	&:active {
+		box-shadow: 0 .5rem 1rem rgba($color-black, 0.5);
+		transform: translateY(0);
+	}
+}
+
+.composition {
+	position: relative;
+
+	&:hover &__photo:not(:hover) {
+		transform: scale(.95);
+	}
+
+	&__photo {
+		width: 55%;
+		border-radius: 2px;
+		box-shadow: 0 1rem 4rem rgba($color-black, .4);
+		position: absolute;
+		z-index: 10;
+		transition: all .2s;
+		outline-offset: 1rem;
+	
+		&--p1 {
+			left: 0;
+			top: -2rem;
+		}
+		&--p2 {
+			right: 0;
+			top: 2rem;
+		}
+		&--p3 {
+			left: 20%;
+			top: 10rem;
+		}
+
+		&:hover {
+			transform: scale(1.05);
+			box-shadow: 0 2.5rem 4rem rgba($color-black, .5);
+			z-index: 20;
+			outline: .5rem solid $color-green;
+		}
+	}
+}
+
+.section-feature {
+	padding: 20rem 0;
+	height: 90vh;
+	background-image: linear-gradient(
+		to right bottom, rgba($color-green-light, 0.6), rgba($color-green-dark, 0.6)), url("../img/odessa-feature-1.jpeg");
+		background-size: cover;
+		background-position: center;
+		//clip-path: polygon(0 0, 100% 0, 100% 70vh, 0 100%);
+		transform: skewY(-7deg);
+		margin-top: -10rem;
+
+		&>* {
+			transform: skewY(7deg);
+		}
+}
+
+.feature-box {
+	background-color: rgba($color-white, .8);
+	padding: 2rem;
+	font-size: 1.5rem;
+	text-align: center;
+	border-radius: 3px;
+	box-shadow: 0 1.5rem 4rem rgba($color-black, .2);
+	transition: all .2s;
+
+	&__icon {
+		font-size: 6rem;
+		margin-bottom: 5px;
+		background-image: 
+		linear-gradient(to right bottom, $color-green-light, $color-green-dark);
+	display: inline-block;
+	-webkit-background-clip: text;
+	color: transparent;
+	}
+
+	&:hover {
+		transform: translateY(-1.5rem) scale(1.05);
+	}
+	&__text {
+
+	}
+}
+
+.section-tour {
+	background-color: $color-grey-light-1;
+	padding: 25rem 0;
+	margin-top: -30vh;
+}
+
+.card {
+	perspective: 150rem;
+	-moz-perspective: 150rem;
+	position: relative;
+	height: 30rem;
+	
+	&__side {
+		height: 30rem;
+		transition: all 1s ease;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		backface-visibility: hidden;
+		bord-radius: 5px;
+		overflow: hidden;
+		box-shadow: 0 2rem 4rem rgba($color-black, .2);
+
+		&--front {
+			background-color: $color-white;
+		}
+
+		&--back {
+			transform: rotateY(180deg);
+
+			&-1 {
+				background-image: linear-gradient(to right bottom, $color-orange-light, $color-orange-dark);
+
+			}
+
+			&-2 {
+				background-image: 
+					linear-gradient(to right bottom, $color-green-light, $color-green-dark);
+			}
+
+			&-3 {
+				background-image: 
+					linear-gradient(to right bottom, $color-blue-light, $color-blue-dark);
+			}
+		}
+	}
+
+	&:hover &__side--front {
+		transform: rotateY(-180deg);
+	}
+
+	&:hover &__side--back {
+		transform: rotateY(0deg);
+	}
+
+
+
+
+	&__picture {
+		background-size: cover;
+		background-position: center;
+		height: 15rem;
+		clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+
+		&--1 {
+			background-image: linear-gradient(to right bottom, rgba($color-orange-light, 0.6), rgba($color-orange-dark, 0.6)), url("../img/odessa-about-1.jpeg");
+
+
+		}
+
+		&--2 {
+			background-image: linear-gradient(to right bottom, rgba($color-green-light, 0.6), rgba($color-green-dark, 0.6)), url("../img/odessa-about-2.jpeg");
+			
+
+		}
+
+		&--3 {
+			background-image: linear-gradient(to right bottom, rgba($color-blue-light, 0.6), rgba($color-blue-dark, 0.6)), url("../img/odessa-about-3.jpeg");
+			
+
+		}
+	}
+
+	&__heading {
+		font-size: 2rem;
+		font-weight: 300;
+		text-transform: uppercase;
+		color: $color-white;
+		position: absolute;
+		top: 15%;
+		left: 50%; 
+		width: 60%;
+	}
+
+	&__heading-span {
+		padding: .5rem;
+		-webkit-box-decoration-break: clone;
+		&--1 {
+		background-image: linear-gradient(to right bottom, rgba($color-orange-light, 0.7), rgba($color-orange-dark, 0.7));
+		}
+		&--2 {
+		background-image: linear-gradient(to right bottom, rgba($color-green-light, 0.7), rgba($color-green-dark, 0.7));
+		}
+		&--3 {
+		background-image: linear-gradient(to right bottom, rgba($color-blue-light, 0.7), rgba($color-blue-dark, 0.7));
+		position: absolute;
+		top: 100%;
+		left: 0%;
+		width: 80%;
+		}
+
+	}
+
+	&__details {
+
+		ul {
+			list-style: none;
+			width: 80%;
+
+			li {
+				text-align: center;
+				font-size: 1.6rem;
+				padding: .5rem;
+				&:not(:last-child) {
+					border-bottom: 1px solid $color-grey-dark;
+				}
+			}
+		}
+	}
+
+	&__cta {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 80%;
+		text-align: center;
+	}
+	&__price-box {
+		text-align: center;
+		color: $color-white;
+		margin-bottom: 1rem;
+	}
+	&__price-only {
+		font-size: 1.4rem;
+	}
+	&__price-value {
+		font-size: 4rem;
+		font-weight: 100;
+	}
+}
+
+
+.u-margin-top-5 {
+	margin-top: 10rem;
+}
+
+.footer {
+	background-color: $color-black;
+	padding: 5rem 0;
+	font-size: 1.4rem;
+
+	&__logo-box {
+		text-align: center;
+		margin-bottom: 5rem;
+	}
+
+	&__logo {
+		height: 15rem;
+		width: auto;
+	}
+
+	&__navigation {
+		border-top: 1px solid $color-grey-light-1;
+		padding-bottom: 2rem;
+		display: inline-block;
+	}
+
+	&__list {
+		list-style: none;
+	}
+
+	&__item {
+		display: inline-block;
+		&:not(:last-child) {
+			margin-right: 2rem;
+		}
+	}
+
+	&__link {
+		&:link, &:visited {
+			color: $color-grey-light-1;
+			text-decoration: none;
+			text-transform: uppercase;
+			display: inline-block;
+			transition: all .2s;
+		}
+		&:hover, &:active {
+			color: $color-green-light;
+			box-shadow: 0 1rem 3rem rgba($color-black, .4);
+			transform: rotate(5deg) scale(1.1);
+		}
+	}
+
+	&__copyright {
+		color: $color-grey-light-1;
+		border-top: 1px solid; $color-grey-light-1;
+		padding-bottom: 2rem;
+		display: inline-block;
+	}
+}
+
+
+
+
+
+
+
